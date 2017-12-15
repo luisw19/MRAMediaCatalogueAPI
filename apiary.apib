@@ -5,14 +5,13 @@ HOST: https://api.mra.com/
 The Music Catalogue API is provides access to MRA's
 digital media assets such as artits, albums and songs.
 
-# Group Artists Media
+# Group Artists Resources
 Artists related digital media resources.
 
-## Artists Resources [/v1/catalogue/artists]
-    
-### Find Artists [GET /v1/catalogue/artists{?limit,name,country,genre}]
-Returns all MRA artists that match the specified criteria.
+## Search and Create Artists [/catalogue/artists{?limit,name,country,genre}]
+
 + Parameters
+
     + limit (number, optional)
 
         A limit on the number of artists to be returned. Limit can range
@@ -33,6 +32,9 @@ Returns all MRA artists that match the specified criteria.
     + genre (string, optional)
 
         A string to be used to search for a specific artist
+    
+### Search Artists [GET]
+Returns all MRA Artists that match the specified criteria.
 
 + Request (application/json)
 
@@ -41,34 +43,74 @@ Returns all MRA artists that match the specified criteria.
             api-key: 9d444d8c-1f30-492f-9d1f-c801089c2e65
 
 + Response 200 (application/json)
+
     + Attributes
+    
         + metadata (Search Metadata)
+        
         + artists (array[Artist])
 
-### Get Artist [GET /v1/catalogue/artists/{artist_id}]
-Returns the details for a specific Artist such as bio and Albums
+### Create Artist [POST]
+Creates an Artist.
 
-+ Parameters
-    + artist_id: art123456 (number, required)
-
-        The unique ID for a specific artist
-        
 + Request (application/json)
 
     + Headers
 
             api-key: 9d444d8c-1f30-492f-9d1f-c801089c2e65
 
-+ Response 200 (application/json)
     + Attributes (Artist)
 
-### Get Artist Albums [GET /v1/catalogue/artists/{artist_id}/albums]
-Returns all the Albums for the specified Artist. 
++ Response 201 (application/json)
+
+    + Attributes (Artist)
+
+## Get and Update Artist [/catalogue/artists/{artist_id}]
 
 + Parameters
+
     + artist_id: art123456 (number, required)
 
         The unique ID for a specific artist
+        
+### Get Artist [GET]
+Returns the details for a specific Artist such as bio and Albums.
+        
++ Request (application/json)
+
+    + Headers
+
+            api-key: 9d444d8c-1f30-492f-9d1f-c801089c2e65
+
++ Response 200 (application/json)
+
+    + Attributes (Artist)
+
+### Update Artist [PUT]
+Updates an existing Artist.
+
++ Request (application/json)
+
+    + Headers
+
+            api-key: 9d444d8c-1f30-492f-9d1f-c801089c2e65
+
+    + Attributes (Artist)
+
++ Response 200 (application/json)
+
+    + Attributes (Artist)
+
+## Get Artist Albums [/catalogue/artists/{artist_id}/albums]
+
++ Parameters
+
+    + artist_id: art123456 (number, required)
+
+        The unique ID for a specific artist
+        
+### Get Artist Albums [GET]
+Returns all the Albums for the specified Artist. 
 
 + Request (application/json)
 
@@ -77,43 +119,21 @@ Returns all the Albums for the specified Artist.
             api-key: 9d444d8c-1f30-492f-9d1f-c801089c2e65
 
 + Response 200 (application/json)
+
     + Attributes
-        + metadata (Search Metadata)
+    
         + albums (array[Album])
 
-# Group Album Media
+# Group Albums Resources
 Artists-related digital media resources.
 
-## Album Resources [/v1/catalogue/albums]
-        
-### Get Album [GET /v1/catalogue/albums/{album_id}]
-Returns the details of a specific Album such as release date and Songs
+## Search and Create Albums [/catalogue/albums{?limit,name,artist,genre}]
 
 + Parameters
-    + album_id: alb000456 (number, required)
 
-        The unique ID for the album
-
-+ Request (application/json)
-
-    + Headers
-
-            api-key: 9d444d8c-1f30-492f-9d1f-c801089c2e65
-
-+ Response 200 (application/json)
-    + Attributes(Album)
-
-# Group Songs Media
-Songs and Video digital media resources.
-
-## Songs Resources [/v1/catalogue/songs]
-
-### Find Songs [GET /v1/catalogue/songs{?limit,name,artist,genre}]
-Returns all Songs that match the specified criteria.
-+ Parameters
     + limit (number, optional)
 
-        A limit on the number of artists to be returned. Limit can range
+        A limit on the number of albums to be returned. Limit can range
         between 1 and 100 items.
 
         + Default: `10`
@@ -130,6 +150,9 @@ Returns all Songs that match the specified criteria.
 
         A string to be used to search for a specific artist
 
+### Search Albums [GET]
+Returns Albums that match the specified criteria.
+
 + Request (application/json)
 
     + Headers
@@ -137,18 +160,133 @@ Returns all Songs that match the specified criteria.
             api-key: 9d444d8c-1f30-492f-9d1f-c801089c2e65
 
 + Response 200 (application/json)
-    + Attributes
-        + metadata (Search Metadata)
-        + songs (array[Song])
 
-### Get Song  [GET /v1/catalogue/songs/{song_id}]
-Returns the details for a specific Song, such as length and streaming endpoints
+    + Attributes
+    
+        + metadata (Search Metadata)
+        
+        + albums (array[Album])
+
+### Create Album [POST]
+Creates an Album. Artist ID most be provided.
+
++ Request (application/json)
+
+    + Headers
+
+            api-key: 9d444d8c-1f30-492f-9d1f-c801089c2e65
+
+    + Attributes(Album)
+
++ Response 201 (application/json)
+
+    + Attributes (Album)
+
+## Get and Update Album [/catalogue/albums/{album_id}]
 
 + Parameters
+
+    + album_id: alb000456 (number, required)
+
+        The unique ID for the album
+
+### Get Album [GET]
+Returns the details of a specific Album such as release date and Songs.
+
++ Request (application/json)
+
+    + Headers
+
+            api-key: 9d444d8c-1f30-492f-9d1f-c801089c2e65
+
++ Response 200 (application/json)
+
+    + Attributes(Album)
+
+### Update Album [POST]
+Updates an existing Album.
+
++ Request (application/json)
+
+    + Headers
+
+            api-key: 9d444d8c-1f30-492f-9d1f-c801089c2e65
+
+    + Attributes (Album)
+
++ Response 200 (application/json)
+
+    + Attributes (Album)
+
+# Group Songs Media
+Songs and Video digital media resources.
+
+## Search and Create Songs  [/catalogue/songs{?limit,name,artist,genre}]
+
++ Parameters
+
+    + limit (number, optional)
+
+        A limit on the number of songs to be returned. Limit can range
+        between 1 and 100 items.
+
+        + Default: `10`
+        
+    + name (string, optional)
+
+        A string to be used to search for a specific artist
+        
+    + artist (string, optional)
+
+        The name of the artist 
+        
+    + genre (string, optional)
+
+        A string to be used to search for a specific artist
+
+### Search Songs [GET]
+Returns all Songs that match the specified criteria.
+
++ Request (application/json)
+
+    + Headers
+
+            api-key: 9d444d8c-1f30-492f-9d1f-c801089c2e65
+
++ Response 200 (application/json)
+
+    + Attributes
+    
+        + metadata (Search Metadata)
+        
+        + songs (array[Song])
+
+### Create Song [POST]
+Creates an Song. Album ID most be provided.
+
++ Request (application/json)
+
+    + Headers
+
+            api-key: 9d444d8c-1f30-492f-9d1f-c801089c2e65
+
+    + Attributes (Song)
+
++ Response 201 (application/json)
+
+    + Attributes (Song)
+
+## Get and Update Song  [/catalogue/songs/{song_id}]
+
++ Parameters
+
     + song_id: son003456 (number, required)
 
         The unique ID for a specific song
 
+### Get Song  [GET]
+Returns the details for a specific Song, such as length and streaming endpoints
+
 + Request (application/json)
 
     + Headers
@@ -156,6 +294,22 @@ Returns the details for a specific Song, such as length and streaming endpoints
             api-key: 9d444d8c-1f30-492f-9d1f-c801089c2e65
 
 + Response 200 (application/json)
+
+    + Attributes (Song)
+
+### Update Song [POST]
+Updates an existing Song.
+
++ Request (application/json)
+
+    + Headers
+
+            api-key: 9d444d8c-1f30-492f-9d1f-c801089c2e65
+
+    + Attributes (Song)
+
++ Response 200 (application/json)
+
     + Attributes (Song)
 
 # Data Structures
@@ -167,7 +321,7 @@ Returns the details for a specific Song, such as length and streaming endpoints
 
 ## Artist (object)
 - artist_name: Oasis (string, required)
-- artist_id: art123456 (string, required)
+- artist_id: art123456 (string, optional)
 - country: UK (string, optional)
 - bio: Oasis is a great band from Manchester (string, optional)
 - albums(array[Album], optional)
@@ -181,15 +335,15 @@ Returns the details for a specific Song, such as length and streaming endpoints
 
 ## Album (object)
 - album_name: `(What's the Story) Morning Glory?` (string, required)
-- album_id: alb000456 (string, required)
+- album_id: alb000456 (string, optional)
 - upc: 074646735121 (string, optional)
 
     Universal Product Code 
 
-- release_date: 1995-10-02 (string, required)
+- release_date: 1995-10-02 (string, optional)
 - song_count: 12 (number, required)
 - length_seconds: 3006 (number, optional)
-- artist(Artist, optional)
+- artist(Artist, required)
 - songs(array[Song], optional)
 - _links (optional)
     - self
@@ -197,14 +351,14 @@ Returns the details for a specific Song, such as length and streaming endpoints
 
 ## Song (object)
 - song_name: Wonder wall (string, required)
-- song_id: son003456 (string, required)
+- song_id: son003456 (string, optional)
 - isrc: GBAAW9500189 (string, optional)
 
     International Standard Recording Code
 
 - release_date: 1995-10-02 (string, optional)
-- artist(Artist, optional)
-- album(Album, optional)
+- artist(Artist, required)
+- album(Album, required)
 - _links (optional)
     - self
         - href: /v1/catalogue/songs/son003456 (string, required)
