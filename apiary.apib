@@ -312,6 +312,37 @@ Updates an existing Song.
 
     + Attributes (Song)
 
+## Add Song Media [/catalogue/songs/{song_id}/media]
+Creates a media file e.g. MP3 or MP4 media file.
+
++ Parameters
+
+    + song_id: son003456 (number, required)
+
+        The unique ID for a specific song
+
+### Add Song Media [POST]
+Create a media file e.g. MP3 or MP4 media file.
+
+ + Request (multipart/form-data;boundary=----BOUNDARY)
+ 
+    + Headers
+
+            api-key: ac108161-d3a5-427d-b814-ff977728395b
+
+    + Body
+
+            ------BOUNDARY
+            Content-Disposition: attachment; name="wonderwall"; filename="wondewall.mp3"
+            Content-Type: audio/mpeg3
+
+            data
+            ------BOUNDARY--
+            
++ Response 201 (application/json)
+
+    + Attributes (Song)
+
 # Data Structures
 
 ## Search Metadata (object)
@@ -324,14 +355,13 @@ Updates an existing Song.
 - artist_id: art123456 (string, optional)
 - country: UK (string, optional)
 - bio: Oasis is a great band from Manchester (string, optional)
+- genres: Rock, Pop (string, required)
 - albums(array[Album], optional)
 - _links (optional)
     - self
         - href: /v1/catalogue/artists/art12345 (string, required)
     - albums
         - href: /v1/catalogue/artists/art12345/albums (string, optional)
-    - genres
-        - href: /v1/catalogue/artists/art12345/genres (string, optional)
 
 ## Album (object)
 - album_name: `(What's the Story) Morning Glory?` (string, required)
@@ -357,7 +387,7 @@ Updates an existing Song.
     International Standard Recording Code
 
 - release_date: 1995-10-02 (string, optional)
-- artist(Artist, required)
+- artist(Artist, optional)
 - album(Album, required)
 - _links (optional)
     - self
@@ -370,5 +400,3 @@ Updates an existing Song.
         - format: mp4 (string, optional)
         - lenght_seconds: 279 (number, optional)
         - href: /v1/catalogue/songs/son003456/audio?format=mp4 (string, optional)
-    - lyrics
-        - href: /v1/catalogue/songs/son003456/lyrics (string, optional)
