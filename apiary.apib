@@ -11,7 +11,6 @@ Artists related digital media resources.
 ## Search and Create Artists [/catalogue/artists{?limit,name,country,genre}]
 
 + Parameters
-
     + limit (number, optional)
 
         A limit on the number of artists to be returned. Limit can range
@@ -63,8 +62,6 @@ ated
 
 + Response 201 (application/json; charset=utf-8)
 
-    + Attributes (Artist)
-
 ## Get and Update Artist [/catalogue/artists/{artist_id}]
 
 + Parameters
@@ -98,8 +95,6 @@ Updates an existing Artist.
     + Attributes (Artist)
 
 + Response 200 (application/json; charset=utf-8)
-
-    + Attributes (Artist)
 
 ## Get Artist Albums [/catalogue/artists/{artist_id}/albums]
 
@@ -180,8 +175,6 @@ Creates an Album. Artist ID most be provided.
 
 + Response 201 (application/json; charset=utf-8)
 
-    + Attributes (Album)
-
 ## Get and Update Album [/catalogue/albums/{album_id}]
 
 + Parameters
@@ -215,8 +208,6 @@ Updates an existing Album.
     + Attributes (Album)
 
 + Response 200 (application/json; charset=utf-8)
-
-    + Attributes (Album)
 
 # Group Songs Media
 Songs and Video digital media resources.
@@ -274,8 +265,6 @@ Creates an Song. Album ID most be provided.
 
 + Response 201 (application/json; charset=utf-8)
 
-    + Attributes (Song)
-
 ## Get and Update Song  [/catalogue/songs/{song_id}]
 
 + Parameters
@@ -287,7 +276,7 @@ Creates an Song. Album ID most be provided.
 ### Get Song  [GET]
 Returns the details for a specific Song, such as length and streaming endpoints
 
-+ Request (text/plain)
++ Request (application/json)
 
     + Headers
 
@@ -309,8 +298,6 @@ Updates an existing Song.
     + Attributes (Song)
 
 + Response 200 (application/json; charset=utf-8)
-
-    + Attributes (Song)
 
 ## Add Song Media [/catalogue/songs/{song_id}/media]
 Creates a media file e.g. MP3 or MP4 media file.
@@ -340,8 +327,6 @@ Create a media file e.g. MP3 or MP4 media file.
             ------BOUNDARY--
             
 + Response 201 (application/json; charset=utf-8)
-
-    + Attributes (Song)
 
 # Data Structures
 
