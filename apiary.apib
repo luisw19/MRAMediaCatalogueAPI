@@ -42,7 +42,7 @@ Returns all MRA Artists that match the specified criteria.
 
             api-key: ac108161-d3a5-427d-b814-ff977728395b
 
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=utf-8)
 
     + Attributes
     
@@ -54,14 +54,14 @@ Returns all MRA Artists that match the specified criteria.
 Creates an Artist.
 
 + Request (application/json)
-
+ated 
     + Headers
 
             api-key: ac108161-d3a5-427d-b814-ff977728395b
 
     + Attributes (Artist)
 
-+ Response 201 (application/json)
++ Response 201 (application/json; charset=utf-8)
 
     + Attributes (Artist)
 
@@ -97,7 +97,7 @@ Updates an existing Artist.
 
     + Attributes (Artist)
 
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=utf-8)
 
     + Attributes (Artist)
 
@@ -118,7 +118,7 @@ Returns all the Albums for the specified Artist.
 
             api-key: ac108161-d3a5-427d-b814-ff977728395b
 
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=utf-8)
 
     + Attributes
     
@@ -159,7 +159,7 @@ Returns Albums that match the specified criteria.
 
             api-key: ac108161-d3a5-427d-b814-ff977728395b
 
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=utf-8)
 
     + Attributes
     
@@ -178,7 +178,7 @@ Creates an Album. Artist ID most be provided.
 
     + Attributes(Album)
 
-+ Response 201 (application/json)
++ Response 201 (application/json; charset=utf-8)
 
     + Attributes (Album)
 
@@ -199,7 +199,7 @@ Returns the details of a specific Album such as release date and Songs.
 
             api-key: ac108161-d3a5-427d-b814-ff977728395b
 
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=utf-8)
 
     + Attributes(Album)
 
@@ -214,7 +214,7 @@ Updates an existing Album.
 
     + Attributes (Album)
 
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=utf-8)
 
     + Attributes (Album)
 
@@ -253,7 +253,7 @@ Returns all Songs that match the specified criteria.
 
             api-key: ac108161-d3a5-427d-b814-ff977728395b
 
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=utf-8)
 
     + Attributes
     
@@ -272,7 +272,7 @@ Creates an Song. Album ID most be provided.
 
     + Attributes (Song)
 
-+ Response 201 (application/json)
++ Response 201 (application/json; charset=utf-8)
 
     + Attributes (Song)
 
@@ -293,7 +293,7 @@ Returns the details for a specific Song, such as length and streaming endpoints
 
             api-key: ac108161-d3a5-427d-b814-ff977728395b
 
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=utf-8)
 
     + Attributes (Song)
 
@@ -308,7 +308,7 @@ Updates an existing Song.
 
     + Attributes (Song)
 
-+ Response 200 (application/json)
++ Response 200 (application/json; charset=utf-8)
 
     + Attributes (Song)
 
@@ -339,7 +339,7 @@ Create a media file e.g. MP3 or MP4 media file.
             data
             ------BOUNDARY--
             
-+ Response 201 (application/json)
++ Response 201 (application/json; charset=utf-8)
 
     + Attributes (Song)
 
