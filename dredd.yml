@@ -1,6 +1,6 @@
 reporter: apiary
 custom:
-  apiaryApiKey: 5259748f13b1f60890ed5666c135b0d7
+  apiaryApiKey: 7454fbe5494028587de670a606da0c7b
   apiaryApiName: mramediacatalogueapi
 dry-run: null
 hookfiles: null
