@@ -1,11 +1,11 @@
 <OAuth2TokenLocalEnforcerConfig>
 	<Name>DEFAULT</Name>
 	<HeaderNameIDToken>IDToken</HeaderNameIDToken>
-	<!-- Issuer is the IDCS instance that issued the token -->
-	<Issuer>https://idcs-e38bf6e51aad4ef883dbffea1c96859e.identity.oraclecloud.com/</Issuer>
+	<!-- Issuer of the token. In this case Oracle Identity Cloud -->
+	<Issuer>https://identity.oraclecloud.com/</Issuer>
 	<AudienceRestrictionFromConfig>true</AudienceRestrictionFromConfig>
-	<!-- Audience is the URL the API Gateway will listen on -->
-	<Audience>https://oc-144-21-74-13.compute.oraclecloud.com:8443</Audience>
+	<!-- Audience should match the Primary Audience in the Resource Server in IDCS -->
+	<Audience>MRAPublicAPIs</Audience>
 	<MandatoryClaims></MandatoryClaims>
 	<!-- useFormat has 2 values  PEMFormatPubKey, X509FormatPubKey -->
 	<PublicCertLocation useFormat='JWKFormatPubKey'>
