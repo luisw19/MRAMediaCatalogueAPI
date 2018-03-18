@@ -1,0 +1,203 @@
+{
+	"id": "57608a36-daea-768a-b424-9eb502999fe4",
+	"name": "MRA OAuth Config",
+	"description": null,
+	"order": [
+		"a7728037-c804-63f4-96a9-f9b2ba60bda2",
+		"39e9cecb-8684-9994-097f-ded56e01bb9a",
+		"04d34a41-b9e4-754e-656f-e605e6972e9b"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1521409486775,
+	"owner": "123968",
+	"public": false,
+	"events": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "c0f66e8d-2ba6-4522-bf55-e4dad116c0d5",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6eaec2f6-beaa-4bfa-b7aa-a75d91bf0471",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variables": null,
+	"auth": null,
+	"requests": [
+		{
+			"id": "04d34a41-b9e4-754e-656f-e605e6972e9b",
+			"headers": "",
+			"headerData": [],
+			"url": "{{HOST}}/oauth2/v1/token",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"events": null,
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "username",
+						"value": "{{CLIENT_ID}}",
+						"type": "string"
+					},
+					{
+						"key": "password",
+						"value": "{{CLIENT_SECRET}}",
+						"type": "string"
+					},
+					{
+						"key": "saveHelperData",
+						"type": "any"
+					},
+					{
+						"key": "showPassword",
+						"value": false,
+						"type": "boolean"
+					}
+				]
+			},
+			"method": "POST",
+			"collectionId": "57608a36-daea-768a-b424-9eb502999fe4",
+			"data": [
+				{
+					"key": "grant_type",
+					"value": "password",
+					"type": "text"
+				},
+				{
+					"key": "scope",
+					"value": "MRAPublicAPIsMediaCatalogueAPI",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "{{USER_LOGIN}}",
+					"type": "text"
+				},
+				{
+					"key": "password",
+					"value": "{{USER_PW}}",
+					"type": "text"
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "Obtain Access Token (Resource Owner)",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1521410377496,
+			"version": 2,
+			"responses": [],
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{CLIENT_ID}}",
+				"password": "{{CLIENT_SECRET}}"
+			}
+		},
+		{
+			"id": "39e9cecb-8684-9994-097f-ded56e01bb9a",
+			"headers": "Authorization: Bearer {{ACCESS_TOKEN}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{ACCESS_TOKEN}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{HOST}}/admin/v1/SigningCert/jwk",
+			"queryParams": [],
+			"events": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"auth": null,
+			"time": 1521412268778,
+			"name": "Obtain Signing Cert",
+			"description": "",
+			"collectionId": "57608a36-daea-768a-b424-9eb502999fe4",
+			"responses": [],
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": ""
+		},
+		{
+			"id": "a7728037-c804-63f4-96a9-f9b2ba60bda2",
+			"headers": "",
+			"headerData": [],
+			"url": "{{HOST}}/oauth2/v1/token",
+			"queryParams": [],
+			"events": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "grant_type",
+					"value": "client_credentials",
+					"type": "text"
+				},
+				{
+					"key": "scope",
+					"value": "urn:opc:idm:__myscopes__",
+					"type": "text"
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"auth": {
+				"basic": [
+					{
+						"key": "password",
+						"value": "{{CLIENT_SECRET}}",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "{{CLIENT_ID}}",
+						"type": "string"
+					},
+					{
+						"key": "saveHelperData",
+						"type": "any"
+					},
+					{
+						"key": "showPassword",
+						"value": false,
+						"type": "boolean"
+					}
+				],
+				"type": "basic"
+			},
+			"time": 1521412223811,
+			"name": "Obtain Access Token (for Signing Cert)",
+			"description": "",
+			"collectionId": "57608a36-daea-768a-b424-9eb502999fe4",
+			"responses": [],
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{CLIENT_ID}}",
+				"password": "{{CLIENT_SECRET}}"
+			}
+		}
+	]
+}
